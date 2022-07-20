@@ -6,3 +6,17 @@ Other important notes:
 - Each network also has a gateway; traffic control can be implemented using network security groups or Azure firewalls to establish better infrastructure security.
 - This IaC can be initiated via the following commands: "terraform init" "terraform plan -out main.tfplan" "terraform execute main.tfplan".
 - Addition of more Terraform code is recommended to improve: more VMs/spokes and their scale sets should be added to effectively scale in and out depending on the workload, bastion or a strong implementation of SSH methods into the machines, etc.
+-Typical sequence of events go in this order:
+(populate config file -> main.tf)
+terraform init
+terraform fmt
+terraform validate
+terraform apply
+terraform show
+terraform state list
+(populate input variables -> variables.tf)
+(populate output variables -> outputs.tf)
+(update config file -> main.tf)
+terraform apply
+terraform output
+terraform destroy
