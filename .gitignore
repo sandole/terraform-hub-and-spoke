@@ -7,3 +7,4 @@ terraform.tfvars
 terraform.tfplan
 
 .terraform
+.terraform.tfstate.lock.info

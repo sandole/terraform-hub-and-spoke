@@ -10,6 +10,14 @@ resource "azurerm_resource_group" "hub-vnet-rg" {
   location = local.hub-location
 }
 
+resource "azurerm_storage_account" "ds-stg" {
+  name                     = "dsstg"
+  resource_group_name      = azurerm_resource_group.hub-vnet-rg.name
+  location                 = azurerm_resource_group.hub-vnet-rg.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}
+
 resource "azurerm_virtual_network" "hub-vnet" {
   name                = "${local.prefix-hub}-vnet"
   location            = azurerm_resource_group.hub-vnet-rg.location
